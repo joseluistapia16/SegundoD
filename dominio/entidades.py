@@ -1,3 +1,11 @@
+class Metodos:
+
+    def __init__(self,valor):
+        self._valor= valor
+
+    def mensaje(self,nombre):
+        return "Hola "+nombre
+
 class Arbol:
 
     def __init__(self, n_hojas,altura,n_ramas):
@@ -31,8 +39,72 @@ class Humano:
     def prueba(self,nombre):
         print("Hola "+nombre)
 
+class Persona:
+
+    def __init__(self,cedula,nombre,direccion):
+        self.__cedula = cedula
+        self.nombre = nombre
+        self.direccion = direccion
+
+    def setCedula(self,cedula):
+        self.__cedula= cedula
+
+    def getCedula(self):
+        return self.__cedula
+
+    def getData(self):
+        return self.__cedula + " "+self.nombre+" "+self.direccion
+
+class Proveedor(Persona):
+
+    def __init__(self,cedula,nombre,direccion,codigo):
+        Persona.__init__(self,cedula,nombre,direccion)
+        self.codigo = codigo
+
+    def getData(self):
+        return "Proveedor:"+self.getCedula()+" "+self.nombre+" "+self.direccion+" "+self.codigo
+
+class Cliente(Persona,Metodos):
+
+    def __init__(self,cedula,nombre, direccion, codigo):
+        Persona.__init__(self,cedula,nombre,direccion)
+        self.codigo = codigo
+
+    def getData(self):
+        return "Cliente :"+self.getCedula()+" "+\
+            self.nombre+" "+self.direccion+" "+self.codigo
+
+    def mensaje(self,nombre):
+        self._valor = nombre
+        print("Hola "+self._valor)
+
+class Producto:
+
+    def __init__(self,codigo,nombre,categoria):
+        self.__codigo = codigo
+        self.nombre = nombre
+        self.categoria = categoria
+
+    def setCodigo(self,codigo):
+        self.__codigo= codigo
+
+    def getCodigo(self):
+        return self.__codigo
+
+    def getData(self):
+        return self.getCodigo()+" "+self.nombre+" "+self.categoria
+
 #Codigo de Prueba
+obCl = Cliente("097444","NESTLE","SAMBORONDON","PR001")
+obCl.mensaje("Rosario")
+print(obCl.getData())
 '''
+obPr = Proveedor("097444","NESTLE","SAMBORONDON","PR001")
+print(obPr.getData())
+obPr.direccion="GUASMO"
+obPr.setCedula("111111")
+print(obPr.getData())
+
 objA = Arbol(20,10.67,40)
 print(objA.getData())
 objA.altura=34
