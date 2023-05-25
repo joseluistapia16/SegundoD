@@ -95,10 +95,41 @@ class Producto:
         return self.getCodigo()+" "+self.nombre+" "+self.categoria
 
 #Codigo de Prueba
+def getClient(lista,cedula):
+    obj = None
+    for i in range(len(lista)):
+        if cedula== lista[i].getCedula():
+            obj= lista[i]
+            break
+    return obj
+
+lista = []
+obCl1 = Cliente("097444","NESTLE","SAMBORONDON","CL001")
+obCl2 = Cliente("012345","ALMA VELOZ","DAULE","CL002")
+obCl3 = Cliente("055678","CAROLINA CHICHANDE","ENTRADA DE LA 8","CL003")
+obCl4 = Cliente("055556","ROSARIO SERRANO","CHONGON","CL004")
+obCl5 = Cliente("091224","CESAR MERCADO","PLAYAS","CL005")
+lista.append(obCl1)
+lista.append(obCl2)
+lista.append(obCl3)
+lista.append(obCl4)
+lista.append(obCl5)
+#print(lista[0].nombre,lista[0].codigo,lista[0].getCedula())
+for i in range(len(lista)):
+    print(lista[i].getData())
+
+ced = input("Cedula:")
+obj= getClient(lista,ced)
+if obj==None:
+    print("Cedula no existe!")
+else:
+    print(obj.getData())
+
+'''
 obCl = Cliente("097444","NESTLE","SAMBORONDON","PR001")
 obCl.mensaje("Rosario")
 print(obCl.getData())
-'''
+
 obPr = Proveedor("097444","NESTLE","SAMBORONDON","PR001")
 print(obPr.getData())
 obPr.direccion="GUASMO"
