@@ -1,6 +1,13 @@
 from procesos.operaciones import *
 from procesos.datos import *
 from procesos.menus import *
+from impl.run import *
+
+if __name__ == '__main__':
+    oR = Run()
+    oR.start()
+
+""" 
 def funcion2():
     v1 = "Hola"+" "+"Segundo D"
     v2 = " POO "
@@ -115,5 +122,6 @@ def funcion9():
         funcion9()
 
 funcion9()
+"""
 
 
